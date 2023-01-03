@@ -16,4 +16,4 @@ socket.on("texto_editor_clientes", (texto) => {
 	atualizaTextoEditor(texto);
 });
 
-export { emitirTextoEditor };
+export { emitirTextoEditor, selecionarDocumento};
