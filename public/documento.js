@@ -18,7 +18,8 @@ selecionarDocumento(nomeDocumento);
 textoEditor.addEventListener("keyup", () => {
 	emitirTextoEditor({
 		texto: textoEditor.value,
-		nomeDocumento});
+		nomeDocumento,
+	});
 });
 
 function atualizaTextoEditor(texto) {
@@ -26,7 +27,14 @@ function atualizaTextoEditor(texto) {
 }
 
 botaoExcluir.addEventListener("click", () => {
-	emitirExcluirDocumento(nomeDocumento)
-})
+	emitirExcluirDocumento(nomeDocumento);
+});
 
-export { atualizaTextoEditor };
+function alertaERedirencionar(nome) {
+	if (nome === nomeDocumento) {
+		alert(`documento ${nome} excluido`);
+		window.location.href = "/";
+	}
+}
+
+export { atualizaTextoEditor, alertaERedirencionar };
