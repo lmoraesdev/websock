@@ -3,6 +3,7 @@ import {
 	encontrarDocumento,
 	obterDocumentos,
 	adicionarDocumento,
+	excluirDocumento,
 } from "./documentosDb.js";
 import io from "./servidor.js";
 
@@ -21,9 +22,15 @@ io.on("connection", (socket) => {
 	});
 
 	socket.on("adicionar_documento", async (nome) => {
-		const resultado = await adicionarDocumento(nome);
-		if (resultado.acknowledged) {
-			io.emit("adicionar_documento_interface", nome);
+		const documentoExiste = (await encontrarDocumento(nome)) !== null;
+
+		if (documentoExiste) {
+			socket.emit("documento_existe", nome);
+		} else {
+			const resultado = await adicionarDocumento(nome);
+			if (resultado.acknowledged) {
+				io.emit("adicionar_documento_interface", nome);
+			}
 		}
 	});
 
@@ -32,5 +39,9 @@ io.on("connection", (socket) => {
 		if (atualizacao.modifiedCount) {
 			socket.to(nomeDocumento).emit("texto_editor_clientes", texto);
 		}
+	});
+
+	socket.on("excluir_documento", async (nome) => {
+		const resultado = await excluirDocumento(nome);
 	});
 });
