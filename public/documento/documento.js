@@ -1,7 +1,7 @@
 import {
+	emitirExcluirDocumento,
 	emitirTextoEditor,
 	selecionarDocumento,
-	emitirExcluirDocumento,
 } from "./socket-front-documento.js";
 
 const parametros = new URLSearchParams(window.location.search);
@@ -11,7 +11,7 @@ const textoEditor = document.getElementById("editor-texto");
 const tituloDocumento = document.getElementById("titulo-documento");
 const botaoExcluir = document.getElementById("excluir-documento");
 
-tituloDocumento.textContent = nomeDocumento || "Documento sem titulo";
+tituloDocumento.textContent = nomeDocumento || "Documento sem título";
 
 selecionarDocumento(nomeDocumento);
 
@@ -30,11 +30,11 @@ botaoExcluir.addEventListener("click", () => {
 	emitirExcluirDocumento(nomeDocumento);
 });
 
-function alertaERedirencionar(nome) {
+function alertarERedirecionar(nome) {
 	if (nome === nomeDocumento) {
-		alert(`documento ${nome} excluido`);
+		alert(`Documento ${nome} excluído!`);
 		window.location.href = "/";
 	}
 }
 
-export { atualizaTextoEditor, alertaERedirencionar };
+export { atualizaTextoEditor, alertarERedirecionar };

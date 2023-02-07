@@ -16,12 +16,12 @@ socket.on("adicionar_documento_interface", (nome) => {
 	inserirLinkDocumento(nome);
 });
 
-socket.on("documento_existe", (nome) => {
-	alert(`O documento ${nome} já existe`)
-})
+socket.on("documento_existente", (nome) => {
+	alert(`O documento ${nome} já existe!`);
+});
 
 socket.on("excluir_documento_sucesso", (nome) => {
 	removerLinkDocumento(nome);
-})
+});
 
 export { emitirAdicionarDocumento };
