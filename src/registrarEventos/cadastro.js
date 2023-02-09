@@ -15,7 +15,7 @@ function registrarEventosCadastro(socket, io) {
 		} else {
 			socket.emit("usuario_ja_existente");
 		}
-	});+
+	});
 }
 
 export default registrarEventosCadastro;
