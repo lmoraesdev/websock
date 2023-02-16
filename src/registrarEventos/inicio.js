@@ -10,11 +10,12 @@ function registrarEventosInicio(socket, io) {
 
 		devolverDocumentos(documentos);
 	});
-	socket.on("adicionar_documentos", async (nome) => {
+
+	socket.on("adicionar_documento", async (nome) => {
 		const documentoExiste = (await encontrarDocumento(nome)) !== null;
 
 		if (documentoExiste) {
-			socket.emit("documento_existemte", nome);
+			socket.emit("documento_existente", nome);
 		} else {
 			const resultado = await adicionarDocumento(nome);
 
@@ -24,7 +25,5 @@ function registrarEventosInicio(socket, io) {
 		}
 	});
 }
-
-
 
 export default registrarEventosInicio;

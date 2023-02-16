@@ -4,7 +4,6 @@ import {
 	excluirDocumento,
 } from "../db/documentosDb.js";
 
-
 function registrarEventosDocumento(socket, io) {
 	socket.on("selecionar_documento", async (nomeDocumento, devolverTexto) => {
 		socket.join(nomeDocumento);
