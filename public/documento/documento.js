@@ -13,7 +13,9 @@ const botaoExcluir = document.getElementById("excluir-documento");
 
 tituloDocumento.textContent = nomeDocumento || "Documento sem título";
 
-selecionarDocumento(nomeDocumento);
+function tratarAutorizacaoSucesso(payloadToken) {
+	selecionarDocumento({ nomeDocumento, nomeUsuario: payloadToken.nomeUsuario });
+}
 
 textoEditor.addEventListener("keyup", () => {
 	emitirTextoEditor({
@@ -37,4 +39,4 @@ function alertarERedirecionar(nome) {
 	}
 }
 
-export { atualizaTextoEditor, alertarERedirecionar };
+export { atualizaTextoEditor, alertarERedirecionar, tratarAutorizacaoSucesso };
