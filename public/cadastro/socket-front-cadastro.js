@@ -1,7 +1,7 @@
 const socket = io();
 
 function emitirCadastrarUsuario(dados) {
-  socket.emit("cadastrar_usuario", dados);
+	socket.emit("cadastrar_usuario", dados);
 }
 
 socket.on("cadastro_sucesso", () => alert("Cadastro realizado com sucesso!"));

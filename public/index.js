@@ -11,19 +11,19 @@ const inputDocumento = document.getElementById("input-documento");
 const botaoLogout = document.getElementById("botao-logout");
 
 botaoLogout.addEventListener("click", () => {
-  removerCookie("tokenJwt");
-  alert("Usuário deslogado com sucesso!");
-  window.location.href = "/login/index.html";
+	removerCookie("tokenJwt");
+	alert("Usuário deslogado com sucesso!");
+	window.location.href = "/login/index.html";
 });
 
 form.addEventListener("submit", (evento) => {
-  evento.preventDefault();
-  emitirAdicionarDocumento(inputDocumento.value);
-  inputDocumento.value = "";
+	evento.preventDefault();
+	emitirAdicionarDocumento(inputDocumento.value);
+	inputDocumento.value = "";
 });
 
 function inserirLinkDocumento(nomeDocumento) {
-  listaDocumentos.innerHTML += `
+	listaDocumentos.innerHTML += `
     <a
       href="/documento/index.html?nome=${nomeDocumento}"
       class="list-group-item list-group-item-action"
@@ -35,9 +35,9 @@ function inserirLinkDocumento(nomeDocumento) {
 }
 
 function removerLinkDocumento(nomeDocumento) {
-  const documento = document.getElementById(`documento-${nomeDocumento}`);
+	const documento = document.getElementById(`documento-${nomeDocumento}`);
 
-  listaDocumentos.removeChild(documento);
+	listaDocumentos.removeChild(documento);
 }
 
 export { inserirLinkDocumento, removerLinkDocumento };

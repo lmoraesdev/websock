@@ -13,11 +13,11 @@ const nspUsuarios = io.of("/usuarios");
 nspUsuarios.use(autorizarUsuario);
 
 nspUsuarios.on("connection", (socket) => {
-  registrarEventosInicio(socket, nspUsuarios);
-  registrarEventosDocumento(socket, nspUsuarios);
+	registrarEventosInicio(socket, nspUsuarios);
+	registrarEventosDocumento(socket, nspUsuarios);
 });
 
 io.of("/").on("connection", (socket) => {
-  registrarEventosCadastro(socket, io);
-  registrarEventosLogin(socket, io);
+	registrarEventosCadastro(socket, io);
+	registrarEventosLogin(socket, io);
 });
